@@ -1,7 +1,7 @@
 **Hadoop prerequisites**
 
 
-#Disable ip and ipv6 tables
+## 1. Disable ip and ipv6 tables
 
 service iptables stop
 chkconfig iptables off
@@ -9,7 +9,7 @@ service ip6tables stop
 chkconfig ip6tables off
 
 
-#setup ntp
+## 2. setup ntp
 
 yum -y install ntp
 ntpdate 0.centos.pool.ntp.org
@@ -20,24 +20,24 @@ ntpstat
 echo "ntpd is running and enabled on boot" 
 
 
-# **ssh, scp and rsync **
+## 3. ssh, scp and rsync 
 
 ssh:
 
 
-**scp**:
+* **scp**:
 http://www.hypexr.org/linux_scp_help.php , http://www.tecmint.com/scp-commands-examples/
 
-Copy the file "foobar.txt" from a remote host to the local host
+*Copy the file "foobar.txt" from a remote host to the local host
 
     $ scp your_username@remotehost.edu:foobar.txt /some/local/directory 
 
-Copy the file "foobar.txt" from the local host to a remote host
+*Copy the file "foobar.txt" from the local host to a remote host
 
     $ scp foobar.txt your_username@remotehost.edu:/some/remote/directory 
 	
 
-**rsync**:
+* **rsync**:
 	http://www.tecmint.com/rsync-local-remote-file-synchronization-commands/
 	
 rsync -zvh local-file user@remote-host:remote-file
@@ -50,7 +50,7 @@ cd OneDrive/Έγγραφα/cloudwick/hadoop/hadoop_assignment
 
 
 
-**Configure hostname and FQDN(Fully Qualifies DOmain Name) for server**
+##  4. Configure hostname and FQDN(Fully Qualifies DOmain Name) for server
 
 Edit file /etc/sysconfig/network:
 
@@ -83,9 +83,34 @@ YourIP      hostname.yourdomain.tld hostname
 
 
 
-5. **Understand Reverse DNS lookup’s and hosts file**
+## 5. Understand Reverse DNS lookup’s and hosts file
 
+Standard DNS: www.itworld.com -> 23.23.212.126 Reverse DNS: 23.23.212.126 -> ec2-23-23-212-126.compute-1.amazonaws.com. 
 
+http://www.itworld.com/article/2833006/networking/how-to-setup-reverse-dns-and-ptr-records.html
+
+$ dig -x 75.126.153.206
+
+You can only display the answer section of a reply with +answer option and clear all other display info with +noall option as follow:
+ $ dig +noall +answer -x 199.232.41.10
+ 
+10.41.232.199.in-addr.arpa. 36000 IN    CNAME   rev-c41-10.gnu.org.
+rev-c41-10.gnu.org.       300     IN      PTR     www.gnu.org.
+
+The PTR record is the one that contains the domain host name. The domain name is, as you expect, www.gnu.org.
+Note that PTR records are not required for IP addresses. If a PTR record is not defined for an IP address, you cannot do a remote DNS lookup. 
+
+Whereas a DNS lookup is:
+
+ $ dig +noall +answer www.gnu.org
+www.gnu.org.            67      IN      CNAME   gnu.org.
+gnu.org.                67      IN      A       199.232.41.10
+
+The IP address is displayed in the A record, and is 199.232.41.10.
+
+## 6. 
+
+## 6. 
 		
 		
 		
