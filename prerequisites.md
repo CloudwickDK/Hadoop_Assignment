@@ -44,10 +44,6 @@ rsync -zvh local-file user@remote-host:remote-file
 rsync -avzhe ssh root@192.168.0.100:/root/install.log /tmp/  (-e in order to specify the protocol:ssh)
 
 
-cd OneDrive/Έγγραφα/cloudwick/hadoop/hadoop_assignment
-
-
-
 
 
 ##  4. Configure hostname and FQDN(Fully Qualifies DOmain Name) for server
@@ -88,6 +84,8 @@ YourIP      hostname.yourdomain.tld hostname
 Standard DNS: www.itworld.com -> 23.23.212.126 Reverse DNS: 23.23.212.126 -> ec2-23-23-212-126.compute-1.amazonaws.com. 
 
 http://www.itworld.com/article/2833006/networking/how-to-setup-reverse-dns-and-ptr-records.html
+https://forum.ivorde.com/unix-reverse-dns-lookup-using-dig-command-ptr-dns-record-type-t19521.html
+http://www.thegeekstuff.com/2012/02/dig-command-examples/
 
 $ dig -x 75.126.153.206
 
@@ -108,9 +106,34 @@ gnu.org.                67      IN      A       199.232.41.10
 
 The IP address is displayed in the A record, and is 199.232.41.10.
 
-## 6. 
 
-## 6. 
+## 6. IPTables
+
+https://wiki.centos.org/HowTos/Network/IPTables
+
+The /etc/sysconfig/iptables-config file stores information used by the kernel to set up packet filtering services at boot time or whenever the service is started. 
+
+commands:
+$ rpm -q iptables
+$ lsmod | grep ip_tables
+$iptables -L
+
+If iptables is not running, you can enable it by running:
+# system-config-securitylevel
+
+
+## 7. Enable services at specified run time levels
+
+https://www.digitalocean.com/community/tutorials/how-to-configure-a-linux-service-to-start-automatically-after-a-crash-or-reboot-part-2-reference
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/s2-services-chkconfig.html
+
+    Runlevel 0: System shutdown
+    Runlevel 1: Single-user, rescue mode
+    Runlevels 2, 3, 4: Multi-user, text mode with networking enabled
+    Runlevel 5: Multi-user, network enabled, graphical mode
+    Runlevel 6: System reboot
+
 		
+
 		
-		
+cd OneDrive/Έγγραφα/cloudwick/hadoop/hadoop_assignment	
