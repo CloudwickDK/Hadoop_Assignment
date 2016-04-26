@@ -132,8 +132,16 @@ https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/De
     Runlevels 2, 3, 4: Multi-user, text mode with networking enabled
     Runlevel 5: Multi-user, network enabled, graphical mode
     Runlevel 6: System reboot
+	
+basic commands:
+chkconfig --list service_name
+chkconfig service_name on
+chkconfig service_name on --level runlevels
+chkconfig service_name off 
+chkconfig service_name off --level runlevels
+	
 
-		
+## 8. 
 
 		
 cd OneDrive/Έγγραφα/cloudwick/hadoop/hadoop_assignment	
