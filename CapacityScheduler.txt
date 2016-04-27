@@ -1,0 +1,57 @@
+Go at Ambari -> Yarn -> Config -> Advanced -> Scheduler
+
+Before:
+
+yarn.scheduler.capacity.default.minimum-user-limit-percent=100
+yarn.scheduler.capacity.maximum-am-resource-percent=0.2
+yarn.scheduler.capacity.maximum-applications=10000
+yarn.scheduler.capacity.node-locality-delay=40
+yarn.scheduler.capacity.root.accessible-node-labels=*
+yarn.scheduler.capacity.root.acl_administer_jobs=yarn
+yarn.scheduler.capacity.root.acl_administer_queue=yarn
+yarn.scheduler.capacity.root.capacity=100
+yarn.scheduler.capacity.root.default.acl_administer_jobs=yarn
+yarn.scheduler.capacity.root.default.acl_administer_queue=yarn
+yarn.scheduler.capacity.root.default.acl_submit_applications=yarn
+yarn.scheduler.capacity.root.default.capacity=100
+yarn.scheduler.capacity.root.default.maximum-capacity=100
+yarn.scheduler.capacity.root.default.state=RUNNING
+yarn.scheduler.capacity.root.default.user-limit-factor=1
+yarn.scheduler.capacity.root.queues=dev.admin
+
+After:
+
+yarn.scheduler.capacity.default.minimum-user-limit-percent=100
+yarn.scheduler.capacity.maximum-am-resource-percent=0.2
+yarn.scheduler.capacity.maximum-applications=10000
+yarn.scheduler.capacity.node-locality-delay=40
+yarn.scheduler.capacity.queue-mappings=u:lydia:dev, u:despoina:admin
+yarn.scheduler.capacity.root.acl_administer_jobs=yarn
+yarn.scheduler.capacity.root.acl_administer_queue=yarn
+yarn.scheduler.capacity.root.admin.acl_administer_queue=despoina
+yarn.scheduler.capacity.root.admin.acl_submit_applications=despoina
+yarn.scheduler.capacity.root.admin.capacity=30
+yarn.scheduler.capacity.root.default.acl_administer_jobs=yarn
+yarn.scheduler.capacity.root.default.acl_administer_queue=yarn
+yarn.scheduler.capacity.root.default.acl_submit_applications=yarn
+yarn.scheduler.capacity.root.dev.acl_administer_queue=lydia
+yarn.scheduler.capacity.root.dev.acl_submit_applications=lydia
+yarn.scheduler.capacity.root.dev.capacity=70
+yarn.scheduler.capacity.root.queues=dev,admin
+
+
+Notes:
+
+remove:
+ yarn.scheduler.capacity.root.accessible-node-labels=*
+and added:
+yarn.scheduler.capacity.queue-mappings=u:lydia:dev, u:despoina:admin
+
+yarn.scheduler.capacity.root.admin.acl_administer_queue=despoina
+yarn.scheduler.capacity.root.admin.acl_submit_applications=despoina
+yarn.scheduler.capacity.root.admin.capacity=30
+
+yarn.scheduler.capacity.root.dev.acl_administer_queue=lydia
+yarn.scheduler.capacity.root.dev.acl_submit_applications=lydia
+yarn.scheduler.capacity.root.dev.capacity=70
+yarn.scheduler.capacity.root.queues=dev,admin
