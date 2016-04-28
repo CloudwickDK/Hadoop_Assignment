@@ -1,0 +1,3 @@
+Description on how to use Fair Scheduler.
+
+We will assign one pool for dev 75% and one pool for admin 25%
