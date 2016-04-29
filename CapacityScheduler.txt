@@ -1,3 +1,4 @@
+We will assign one pool for dev 75% and one pool for admin 25%
 Go at Ambari -> Yarn -> Config -> Advanced -> Scheduler
 
 Before:
