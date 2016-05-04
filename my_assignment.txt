@@ -1,0 +1,21 @@
+1. You are expected to install a 5 node Hadoop cluster (use HDP quickstart). The cluster 
+
+requirements are
+
+	a. It should be Highly Available
+
+	b. It should be a multi tenant cluster. set up Fair scheduler. It should have two pools  
+
+	‘dev’ and ‘admin’, with development having 75 % weights and admin having the 
+
+	rest 25 %. Your cluster should have the first names of your team members as its 
+
+	users. You are free to allot them the pools you want.
+
+	c. Run Hive, Pig, Sqoop, and Spark on your clusters.
+
+	d. Run YARN (MRv2) on the cluster.
+
+2. You are free to choose where to run your namenode, datanodes, and other processes 
+
+run.
